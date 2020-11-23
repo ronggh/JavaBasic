@@ -1,5 +1,7 @@
 package cn.alan.clone;
 
+import cn.alan.utils.CloneUtils;
+
 public class CloneTest {
     public static void main(String[] args) {
         try {
