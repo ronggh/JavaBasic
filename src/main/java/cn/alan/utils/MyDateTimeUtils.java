@@ -8,6 +8,8 @@ import java.util.TimeZone;
 
 public class MyDateTimeUtils {
     public static final String kDefaultFormat = "yyyy-MM-dd HH:mm:ss";
+    public static final String kDefaultDateFormat = "yyyy-MM-dd";
+    public static final String kDefaultTimeFormat = "HH:mm:ss";
 
     /**
      * 获取当前日期和时间
@@ -80,6 +82,33 @@ public class MyDateTimeUtils {
     }
 
     /**
+     * 今日
+     * 
+     * @return
+     */
+    public static Date today() {
+        return currentDate();
+    }
+
+    /**
+     * 明天
+     * 
+     * @return
+     */
+    public static Date tomorrow() {
+        return afterDays(today(), 1);
+    }
+
+    /**
+     * 昨天
+     * 
+     * @return
+     */
+    public static Date yesterday() {
+        return afterDays(today(), -1);
+    }
+
+    /**
      * 格式化日期时间为指定的格式
      * 
      * @param date
@@ -102,6 +131,26 @@ public class MyDateTimeUtils {
      */
     public static String format(Date date) {
         return format(date, kDefaultFormat);
+    }
+
+    /**
+     * 仅取日期
+     * 
+     * @param date
+     * @return
+     */
+    public static String formatShortDate(Date date) {
+        return format(date, kDefaultDateFormat);
+    }
+
+    /**
+     * 仅取时间
+     * 
+     * @param date
+     * @return
+     */
+    public static String formatShortTime(Date date) {
+        return format(date, kDefaultTimeFormat);
     }
 
     /**

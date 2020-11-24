@@ -3,6 +3,7 @@ package cn.alan;
 import java.util.Date;
 
 import cn.alan.utils.MyDateTimeUtils;
+import cn.hutool.core.util.StrUtil;
 
 public class MyDateTimeUtilsTest {
     public static void main(String[] args) {
@@ -17,5 +18,10 @@ public class MyDateTimeUtilsTest {
         System.out.println("date2timestamp :" + MyDateTimeUtils.date2Timestamp(new Date()));
         System.out.println("timestamp2date :" + MyDateTimeUtils.timestamp2Date(MyDateTimeUtils.currentTimeMillis()));
         System.out.println("afterDays :" + MyDateTimeUtils.afterDays(MyDateTimeUtils.currentDate(), -1));
+
+        System.out.println("today :" + MyDateTimeUtils.formatShortDate(MyDateTimeUtils.today()));
+        System.out.println("tomorrow :" + MyDateTimeUtils.formatShortDate(MyDateTimeUtils.tomorrow()));
+        System.out.println("yesterday :" + MyDateTimeUtils.formatShortDate(MyDateTimeUtils.yesterday()));
+
     }
 }

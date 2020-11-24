@@ -1,7 +1,12 @@
 package cn.alan.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MyStringUtils {
     private final static String EMPTY_SPACE = "";
+    private final static String CHINESE_CHARS =
+        "[\u4E00-\u9FA5|\\！|\\，|\\。|\\（|\\）|\\《|\\》|\\“|\\”|\\？|\\：|\\；|\\【|\\】]";
 
     /**
      * 是否为空，包括null和""
@@ -25,7 +30,8 @@ public class MyStringUtils {
     }
 
     /**
-     * 是否为空或空白字符，如" " ,"\r"等 空白字符（包括空格，制表符\t，换行符\n，换页符\f，回车\r）
+     * 是否为空或空白字符，如" " ,"\r"等 空白字符<br/>
+     * （包括空格，制表符\t，换行符\n，换页符\f，回车\r）
      * 
      * @param str
      * @return
@@ -148,4 +154,34 @@ public class MyStringUtils {
         return str;
     }
 
+    /**
+     * 判断是否为中文
+     * 
+     * @param str
+     * @return
+     */
+    public static boolean isChineseString(String str) {
+        return str.matches("[\u4E00-\u9FA5]+");
+    }
+
+    /**
+     * 字符串是否包含中文
+     *
+     * @param str
+     *            待校验字符串
+     * @return true 包含中文字符 false 不包含中文字符
+     * 
+     */
+    public static boolean isContainChinese(String str) {
+
+        if (isEmpty(str)) {
+            return false;
+        }
+        Pattern pattern = Pattern.compile(CHINESE_CHARS);
+        Matcher m = pattern.matcher(str);
+        if (m.find()) {
+            return true;
+        }
+        return false;
+    }
 }
